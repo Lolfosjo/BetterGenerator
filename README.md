@@ -19,7 +19,7 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 
 
 
-### Ingame Screenshot - Spruce Peaks
+### Ingame Screenshot
 ![screenshot1](https://raw.githubusercontent.com/Lolfosjo/Worldgentestisbad/refs/heads/biome-scaling/pictures/a_Custom_Generator.png)
 
 
