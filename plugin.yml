@@ -1,0 +1,7 @@
+name: BetterGenerator
+version: 0.8.0
+main: worldgen\Main
+api: 5.0.0
+authors:
+- AI
+- Lolfosjo
