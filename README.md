@@ -16,6 +16,7 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 - Easy creation of **unlimited** new biomes and more (BiomeRegistry.php)
 - Old Caves (Are performance intensive and not very good, optional)
 - Adds some Vanilla Blocks (Firefly Bush, Bush)
+- Ore generation (unfinished and buggy with caves but implemented, fix soon)
 
 
 
@@ -39,7 +40,6 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 - 3D Biomes (90%)
 - Rework the Tree Codes
 - Bigger, Better Caves
-- Ore generation
 - Better Snow placement (In the Mountains)
 - Better Water Generation (Lakes, Oceans, Rivers)
 - Better Name for the Spruce Peaks
