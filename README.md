@@ -20,15 +20,15 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 
 
 ### Ingame Screenshot
-![screenshot1](https://raw.githubusercontent.com/Lolfosjo/Worldgentestisbad/refs/heads/biome-scaling/pictures/a_Custom_Generator.png)
+![screenshot1](https://raw.githubusercontent.com/Lolfosjo/BetterGenerator/refs/heads/main/pictures/a_Custom_Generator.png)
 
 
 ### Ingame Screenshot
-![screenshot1](https://raw.githubusercontent.com/Lolfosjo/BetterGenerator/refs/heads/main/pictures/Better_Generator1.png)
+![screenshot2](https://raw.githubusercontent.com/Lolfosjo/BetterGenerator/refs/heads/main/pictures/Better_Generator1.png)
 
 
 ### Ingame Screenshot
-![screenshot1](https://raw.githubusercontent.com/Lolfosjo/BetterGenerator/refs/heads/main/pictures/Minecraft%20for%20Windows%2013.11.2025%2014_12_27.png)
+![screenshot3](https://raw.githubusercontent.com/Lolfosjo/BetterGenerator/refs/heads/main/pictures/Minecraft%20for%20Windows%2013.11.2025%2014_12_27.png)
 
 
 ## Roadmap
