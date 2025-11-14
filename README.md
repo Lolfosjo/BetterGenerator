@@ -14,7 +14,7 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 - Plains, Oak Forest, Swamp, Spruce Peaks (Custom Biomes are easy to add)
 - Relatively good looking mountains
 - Easy creation of **unlimited** new biomes and more (BiomeRegistry.php)
-- Old Caves (Are performance intensive, optional)
+- Old Caves (Are performance intensive and not very good, optional)
 - Adds some Vanilla Blocks (Firefly Bush, Bush)
 
 
@@ -33,7 +33,7 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 
 ## Roadmap
 - More Biomes (Savanna, Desert, Ocean, Birch Forest, River and more)
-- Better Performance (ÍMPORTANT)
+- Performance improvements & code cleanup (high priority)
 - More Settings for Biomes
 - Add custom biomes and more via config
 - 3D Biomes (90%)
@@ -41,7 +41,7 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 - Bigger, Better Caves
 - Ore generation
 - Better Snow placement (In the Mountains)
-- Less Water (Lakes, Ponds)
+- Better Water Generation (Lakes, Oceans, Rivers)
 - Better Name for the Spruce Peaks
 
 
