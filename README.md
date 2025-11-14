@@ -22,9 +22,9 @@ If you feel like fixing or continuing this mess, go ahead and make it yours.
 ## How to use
 1. Download the Plugin https://poggit.pmmp.io/r/260872/BetterGenerator_dev-3.phar
 2. Put it in the plugins Folder (You need Multiworld)
-3. Ingame: /mw create <worldname> <seed> better_generator
+3. Ingame: /mw create {worldname} {seed} better_generator
    
-For Cave Generation: /mw create <worldname> <seed> better_generator_caves (Not recommended for use yet)
+For Cave Generation: /mw create {worldname} {seed} better_generator_caves (Not recommended for use yet)
 
 
 ### Ingame Screenshot
