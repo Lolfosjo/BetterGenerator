@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace worldgen\world\biome;
 
+use pocketmine\block\SweetBerryBush;
 use pocketmine\block\VanillaBlocks;
 use worldgen\world\blocks\ExtraVanillaBlocks;
 use pocketmine\data\bedrock\BiomeIds;
@@ -164,6 +165,14 @@ class BiomeRegistry {
                 chance: 0.15,
                 attemptsPerChunk: 4,
                 clusterSize: 3
+            ))
+            ->addFeature(new FlowerFeature(
+                flowers: [
+                    VanillaBlocks::SWEET_BERRY_BUSH()->setAge(SweetBerryBush::STAGE_MATURE)
+                ],
+                chance: 0.15,
+                attemptsPerChunk: 4,
+                clusterSize: 6
             ));
         
         // Swamp
