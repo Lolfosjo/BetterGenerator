@@ -7,46 +7,47 @@ namespace worldgen\world\biome;
 use pocketmine\block\Block;
 use worldgen\world\decoration\BiomeDecorator;
 
-class Biome {
+/**
+ * Abstrakte Basis-Klasse für alle Biome
+ * Jedes Biome sollte von dieser Klasse erben und die abstrakten Methoden implementieren
+ */
+abstract class Biome {
 
-    private string $name;
-    private int $height;
+    protected string $name;
+    protected int $height;
     /** @var BiomeLayer[] */
-    private array $layers;
-    private Block $undergroundBlock;
-    private BiomeClimate $climate;
-    private ?int $vanillaBiomeId;
-    private BiomeDecorator $decorator;
-    private float $sizeMultiplier;
+    protected array $layers = [];
+    protected Block $undergroundBlock;
+    protected BiomeClimate $climate;
+    protected ?int $vanillaBiomeId;
+    protected BiomeDecorator $decorator;
+    protected float $sizeMultiplier;
 
     /**
-     * @param string $name Biome-Name
-     * @param int $height Basis-Höhe des Biomes
-     * @param BiomeLayer[] $layers Layer von oben nach unten (werden in Reihenfolge geprüft)
-     * @param Block $undergroundBlock Block für tief unter der Oberfläche
-     * @param BiomeClimate|null $climate Klima-Einstellungen (optional)
-     * @param int|null $vanillaBiomeId Vanilla Minecraft Biome-ID für Grasfarbe (optional)
-     * @param BiomeDecorator|null $decorator Decorator für Vegetationen/Features (optional)
-     * @param float $sizeMultiplier Größen-Multiplikator (1.0 = normal, 0.5 = halb so groß, 2.0 = doppelt so groß)
+     * Initialisiert das Biome mit Standardwerten
+     * Wird vom Konstruktor aufgerufen
      */
-    public function __construct(
-        string $name,
-        int $height,
-        array $layers,
-        Block $undergroundBlock,
-        ?BiomeClimate $climate = null,
-        ?int $vanillaBiomeId = null,
-        ?BiomeDecorator $decorator = null,
-        float $sizeMultiplier = 1.0
-    ) {
-        $this->name = $name;
-        $this->height = $height;
-        $this->layers = $layers;
-        $this->undergroundBlock = $undergroundBlock;
-        $this->climate = $climate ?? BiomeClimate::temperate();
-        $this->vanillaBiomeId = $vanillaBiomeId;
-        $this->decorator = $decorator ?? new BiomeDecorator();
-        $this->sizeMultiplier = max(0.1, min(5.0, $sizeMultiplier)); // Limit zwischen 0.1 und 5.0
+    abstract protected function initialize(): void;
+
+    /**
+     * Konfiguriert die Layer des Biomes
+     * @return BiomeLayer[]
+     */
+    abstract protected function configureLayers(): array;
+
+    /**
+     * Konfiguriert den Decorator des Biomes
+     */
+    abstract protected function configureDecorator(): BiomeDecorator;
+
+    public function __construct() {
+        $this->decorator = new BiomeDecorator();
+        $this->sizeMultiplier = 1.0;
+
+        $this->initialize();
+
+        $this->layers = $this->configureLayers();
+        $this->decorator = $this->configureDecorator();
     }
 
     public function getName(): string {
@@ -57,9 +58,6 @@ class Biome {
         return $this->height;
     }
 
-    /**
-     * @return BiomeLayer[]
-     */
     public function getLayers(): array {
         return $this->layers;
     }
@@ -80,26 +78,27 @@ class Biome {
         return $this->decorator;
     }
 
-    /**
-     * Gibt den Größen-Multiplikator zurück
-     * Kleinere Werte = kleinere Biome, größere Werte = größere Biome
-     */
     public function getSizeMultiplier(): float {
         return $this->sizeMultiplier;
     }
 
     /**
-     * Gibt den passenden Block für eine gegebene absolute Y-Koordinate und Oberflächen-Y zurück
+     * Gibt den Block für eine bestimmte Y-Position zurück
+     * Basierend auf den konfigurierten Layern des Biomes
+     *
+     * @param int $y Die absolute Y-Koordinate
+     * @param int $surfaceY Die Y-Koordinate der Oberfläche
+     * @return Block Der Block an dieser Position
      */
     public function getBlockAt(int $y, int $surfaceY): Block {
         $relativeY = $y - $surfaceY;
-        
+
         foreach ($this->layers as $layer) {
             if ($layer->matches($y, $surfaceY, $relativeY)) {
                 return $layer->getBlock();
             }
         }
-        
+
         return $this->undergroundBlock;
     }
 }

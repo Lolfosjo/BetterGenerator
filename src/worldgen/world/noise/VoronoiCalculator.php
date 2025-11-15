@@ -94,13 +94,11 @@ class VoronoiCalculator {
             $dz = $scaledPointZ - $adjustedPz;
             $d2 = $dx * $dx + $dz * $dz;
 
-            // Kompatibilitäts-Check: Erhöhe Distanz wenn inkompatibel
             if ($this->enforceCompatibility && $n1 < 999.0) {
                 $currentClosestBiome = $closestBiomeIdx;
                 $candidateBiome = $point['biomeIdx'];
                 
                 if (!BiomeCompatibility::areCompatible($currentClosestBiome, $candidateBiome)) {
-                    // Penalty für inkompatible Biome
                     $d2 *= $this->compatibilityPenalty;
                 }
             }
@@ -116,11 +114,9 @@ class VoronoiCalculator {
             }
         }
 
-        // Finale Kompatibilitätsprüfung
         if ($this->enforceCompatibility && 
             !BiomeCompatibility::areCompatible($closestBiomeIdx, $secondClosestBiomeIdx)) {
-            
-            // Wenn die zwei nächsten Biome inkompatibel sind, suche alternatives Biom
+
             $closestBiomeIdx = $this->findCompatibleAlternative(
                 $worldX, 
                 $worldZ, 
@@ -148,11 +144,9 @@ class VoronoiCalculator {
         int $secondaryBiome,
         array $points
     ): int {
-        // Prüfe bevorzugte Nachbarn zuerst
         $preferredNeighbors = BiomeCompatibility::getPreferredNeighbors($primaryBiome);
         
         if (!empty($preferredNeighbors)) {
-            // Versuche bevorzugten Nachbarn zu finden
             foreach ($points as $point) {
                 if (in_array($point['biomeIdx'], $preferredNeighbors, true)) {
                     return $point['biomeIdx'];
@@ -160,7 +154,6 @@ class VoronoiCalculator {
             }
         }
 
-        // Falls kein bevorzugter Nachbar gefunden, suche beliebiges kompatibles Biom
         foreach ($points as $point) {
             if ($point['biomeIdx'] !== $secondaryBiome && 
                 BiomeCompatibility::areCompatible($primaryBiome, $point['biomeIdx'])) {
@@ -168,7 +161,6 @@ class VoronoiCalculator {
             }
         }
 
-        // Fallback: Behalte primäres Biom
         return $primaryBiome;
     }
 
